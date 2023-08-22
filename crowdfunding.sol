@@ -30,10 +30,4 @@ contract Crowdfunding {
         fundingClosed = true;
     }
 
-    function claimRefund() external {
-        require(fundingClosed && raisedAmount < goal, "Refunds are not available");
-        uint amount = contributions[msg.sender];
-        contributions[msg.sender] = 0;
-        payable(msg.sender).transfer(amount);
-    }
 }
